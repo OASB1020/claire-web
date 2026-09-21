@@ -1,0 +1,1206 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#faf6f2">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CLAIRE | Ciencia, confianza y estilo">
+<meta property="og:description" content="Champú y acondicionador para ella y para él. Bogotá, envíos a todo el país.">
+<meta property="og:locale" content="es_CO">
+<title>CLAIRE | Cuidado capilar para ella y para él</title>
+<meta name="description" content="CLAIRE: champú y acondicionador para ella y para él. Ciencia, confianza y estilo. Bogotá, envíos a todo el país.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap');
+
+  :root{
+    --cream:#faf6f2;
+    --paper:#fffdfb;
+    --ink:#2e2823;
+    --ink-soft:#6b5f57;
+    --rose-900:#8c5457;
+    --rose-600:#b97477;
+    --rose-500:#c98f8f;
+    --rose-300:#e3bcbb;
+    --rose-200:#f1d6d2;
+    --rose-100:#f9ece9;
+    --blue-900:#3f5c6e;
+    --blue-600:#5c7d90;
+    --blue-500:#7fa0b3;
+    --blue-300:#b7cdd7;
+    --blue-200:#d6e5ea;
+    --blue-100:#eef4f6;
+    --gold:#b8935f;
+    --gold-soft:#e7d6bd;
+    --shadow: 0 20px 45px -25px rgba(46,40,35,.35);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Jost',ui-sans-serif,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;font-weight:500;margin:0;text-wrap:balance;}
+  p{margin:0;line-height:1.7;}
+  button{font-family:inherit;cursor:pointer;}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:500;
+  }
+  .wrap{max-width:1140px;margin:0 auto;padding-inline:24px;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+
+  /* ---------- HOME / HERO ---------- */
+  #home{display:flex;flex-direction:column;background:var(--cream);}
+  #home.is-hidden{display:none;}
+  .split-hero{
+    position:relative;
+    width:100%;
+    aspect-ratio:1408/768;
+    overflow:hidden;
+  }
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;}
+  .hero-zone{
+    position:absolute;top:0;bottom:0;width:50%;z-index:2;
+    display:flex;align-items:flex-end;justify-content:center;
+    padding-bottom:6%;border:0;background:none;
+  }
+  .hero-zone--mujer{left:0;}
+  .hero-zone--hombre{right:0;}
+  .hero-zone .zone-label{
+    display:flex;align-items:center;gap:10px;font-size:clamp(.6rem,1.4vw,.78rem);letter-spacing:.32em;
+    text-transform:uppercase;padding:.8em 1.5em;border:1px solid currentColor;border-radius:999px;
+    background:rgba(255,253,251,.55);backdrop-filter:blur(6px);
+    transition:background .25s ease,color .25s ease,transform .25s ease;
+  }
+  .hero-zone--mujer .zone-label{color:var(--rose-900);}
+  .hero-zone--hombre .zone-label{color:var(--blue-900);}
+  .hero-zone:hover .zone-label{transform:translateY(-4px);}
+  .hero-zone--mujer:hover .zone-label{background:var(--rose-900);color:var(--paper);}
+  .hero-zone--hombre:hover .zone-label{background:var(--blue-900);color:var(--paper);}
+  .hero-zone:focus-visible .zone-label{outline:2px solid var(--gold);outline-offset:3px;}
+
+  .hero-foot{
+    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+    padding:22px 24px;background:var(--paper);border-top:1px solid var(--rose-100);
+  }
+  .hero-foot small{color:var(--ink-soft);font-size:.78rem;letter-spacing:.04em;}
+  .hero-foot .foot-links{display:flex;gap:22px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;}
+  .hero-foot .foot-links a{color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:2px;}
+  .hero-foot .foot-links a:hover{color:var(--ink);border-color:var(--gold);}
+
+  @media (max-width:720px){
+    .hero-zone{padding-bottom:8%;}
+    .hero-zone .zone-label{padding:.6em 1.1em;}
+    .hero-foot{flex-direction:column;align-items:flex-start;}
+  }
+
+  /* ---------- WORLD PAGES (mujer / hombre) ---------- */
+  .world{display:none;}
+  .world.active{display:block;}
+
+  .world-nav{
+    position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;background:color-mix(in srgb, var(--cream) 88%, transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid rgba(46,40,35,.08);
+  }
+  .brand-mark{font-family:'Cormorant Garamond',serif;font-size:1.35rem;letter-spacing:.14em;}
+  .world-nav .links{display:flex;gap:24px;align-items:center;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;}
+  .world-nav .links a{color:var(--ink-soft);}
+  .world-nav .links a:hover{color:var(--ink);}
+  .switch-pill{
+    border-radius:999px;padding:8px 16px;border:1px solid currentColor;font-size:.7rem;
+    letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;
+  }
+  .theme-mujer .switch-pill{color:var(--rose-900);}
+  .theme-hombre .switch-pill{color:var(--blue-900);}
+  .nav-toggle{display:none;background:none;border:1px solid currentColor;border-radius:8px;padding:8px 10px;}
+
+  .world-hero{padding:88px 24px 76px;text-align:center;position:relative;overflow:hidden;}
+  .theme-mujer .world-hero{background:linear-gradient(180deg,var(--rose-100),var(--cream));}
+  .theme-hombre .world-hero{background:linear-gradient(180deg,var(--blue-100),var(--cream));}
+  .world-hero h1{font-size:clamp(2.4rem,6vw,3.6rem);}
+  .theme-mujer .world-hero h1{color:var(--rose-900);}
+  .theme-hombre .world-hero h1{color:var(--blue-900);}
+  .world-hero .sub{max-width:520px;margin:18px auto 0;color:var(--ink-soft);font-size:1.02rem;}
+
+  section{padding:88px 0;}
+  section + section{border-top:1px solid rgba(46,40,35,.06);}
+  .section-head{max-width:620px;margin:0 auto 48px;text-align:center;display:flex;flex-direction:column;gap:14px;}
+  .section-head h2{font-size:clamp(1.9rem,4vw,2.6rem);}
+
+  /* pillars */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:820px;margin:0 auto;}
+  .pillar{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;padding:8px;}
+  .pillar svg{width:40px;height:40px;}
+  .theme-mujer .pillar svg{stroke:var(--rose-600);}
+  .theme-hombre .pillar svg{stroke:var(--blue-600);}
+  .pillar h3{font-size:1.15rem;}
+  .pillar p{color:var(--ink-soft);font-size:.92rem;}
+
+  /* catalog */
+  .catalog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .product-card{
+    background:var(--paper);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;
+  }
+  .product-photo{
+    aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;
+  }
+  .theme-mujer .product-photo{background:linear-gradient(150deg,var(--rose-200),var(--rose-100));}
+  .theme-hombre .product-photo{background:linear-gradient(150deg,var(--blue-200),var(--blue-100));}
+  .product-photo svg{width:34%;stroke-width:1.1;fill:none;}
+  .theme-mujer .product-photo svg{stroke:var(--rose-900);}
+  .theme-hombre .product-photo svg{stroke:var(--blue-900);}
+  .product-body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:8px;flex:1;}
+  .product-body .cat{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;}
+  .theme-mujer .product-body .cat{color:var(--rose-600);}
+  .theme-hombre .product-body .cat{color:var(--blue-600);}
+  .product-body h3{font-size:1.3rem;}
+  .product-body p{color:var(--ink-soft);font-size:.9rem;flex:1;}
+  .product-cta{
+    margin-top:6px;align-self:flex-start;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+    border-bottom:1px solid currentColor;padding-bottom:3px;
+  }
+  .theme-mujer .product-cta{color:var(--rose-900);}
+  .theme-hombre .product-cta{color:var(--blue-900);}
+  .catalog-note{text-align:center;color:var(--ink-soft);font-size:.82rem;margin-top:40px;font-style:italic;font-family:'Cormorant Garamond',serif;}
+
+  /* about */
+  .line-block + .line-block{margin-top:72px;}
+  .line-head{display:flex;flex-direction:column;gap:8px;margin-bottom:28px;}
+  .theme-mujer .line-head .eyebrow{color:var(--rose-600);}
+  .theme-hombre .line-head .eyebrow{color:var(--blue-600);}
+  .line-head h3{font-size:clamp(1.5rem,3vw,2rem);}
+  .fragrance{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.98rem;color:var(--ink-soft);}
+  .product-card--kit{outline:1px solid var(--gold-soft);}
+  .product-card--kit .product-photo svg{width:44%;}
+  .badge-kit{position:absolute;top:14px;left:14px;font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--paper);color:var(--ink);}
+  .theme-mujer .product-photo svg.bottle,.theme-hombre .product-photo svg.bottle{width:auto;height:88%;max-width:92%;stroke:none;stroke-width:0;fill:none;}
+  .theme-mujer .about-visual svg.founders,.theme-hombre .about-visual svg.founders{width:90%;height:auto;}
+  .about-quote{margin-top:26px !important;padding-top:18px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.3rem,2.6vw,1.6rem) !important;line-height:1.45;color:var(--ink) !important;position:relative;}
+  .about-quote::before{content:"";position:absolute;top:0;left:0;width:44px;height:1px;background:var(--gold);}
+  .about-close{margin-top:18px !important;font-size:.95rem !important;}
+  .about-close a{border-bottom:1px solid var(--gold);color:var(--ink);}
+  .story-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:72px;}
+  .story-panel{margin:0;display:flex;flex-direction:column;gap:14px;}
+  .story-panel .art{aspect-ratio:300/340;border-radius:20px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .theme-mujer .story-panel .art{background:linear-gradient(160deg,var(--rose-200),var(--rose-100) 65%,var(--paper));color:var(--rose-900);}
+  .theme-hombre .story-panel .art{background:linear-gradient(160deg,var(--blue-200),var(--blue-100) 65%,var(--paper));color:var(--blue-900);}
+  .story-panel svg{width:86%;height:auto;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+  .story-panel figcaption{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.12rem;text-align:center;color:var(--ink-soft);text-wrap:balance;}
+  @media (max-width:760px){.story-gallery{grid-template-columns:1fr;max-width:380px;margin-inline:auto;}}
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+  .about-copy p + p{margin-top:16px;}
+  .about-copy p{color:var(--ink-soft);font-size:1.02rem;}
+  .about-visual{aspect-ratio:1;border-radius:24px;display:flex;align-items:center;justify-content:center;}
+  .theme-mujer .about-visual{background:linear-gradient(160deg,var(--rose-200),var(--rose-100) 60%,var(--paper));}
+  .theme-hombre .about-visual{background:linear-gradient(160deg,var(--blue-200),var(--blue-100) 60%,var(--paper));}
+  .about-visual svg{width:52%;stroke-width:1;fill:none;}
+  .theme-mujer .about-visual svg{stroke:var(--rose-900);}
+  .theme-hombre .about-visual svg{stroke:var(--blue-900);}
+
+  /* testimonials */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .testi-card{background:var(--paper);border-radius:16px;padding:28px 26px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:18px;}
+  .testi-list{display:flex;flex-direction:column;gap:24px;}
+  .testi-grid--4{grid-template-columns:repeat(2,1fr);}
+  .testi-feature{padding:40px 44px;gap:20px;align-items:flex-start;}
+  .testi-feature q{font-size:clamp(1.3rem,2.6vw,1.65rem);line-height:1.55;max-width:820px;}
+  .theme-mujer .testi-feature{background:linear-gradient(160deg,var(--rose-100),var(--paper));}
+  .theme-hombre .testi-feature{background:linear-gradient(160deg,var(--blue-100),var(--paper));}
+  .theme-mujer .testi-feature .eyebrow{color:var(--rose-600);}
+  .theme-hombre .testi-feature .eyebrow{color:var(--blue-600);}
+  .testi-aside{font-size:.95rem;color:var(--ink-soft);font-style:italic;}
+  @media (max-width:760px){.testi-grid--4{grid-template-columns:1fr;} .testi-feature{padding:30px 24px;}}
+  .testi-card q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;line-height:1.6;quotes:none;}
+  .testi-who{display:flex;align-items:center;gap:12px;}
+  .testi-avatar{width:38px;height:38px;border-radius:50%;flex:none;}
+  .theme-mujer .testi-avatar{background:linear-gradient(135deg,var(--rose-500),var(--rose-200));}
+  .theme-hombre .testi-avatar{background:linear-gradient(135deg,var(--blue-500),var(--blue-200));}
+  .testi-who .name{font-size:.9rem;font-weight:500;}
+  .testi-who .role{font-size:.76rem;color:var(--ink-soft);}
+
+  /* contact */
+  .contact-card{
+    max-width:760px;margin:0 auto;border-radius:22px;padding:48px 40px;text-align:center;
+    display:flex;flex-direction:column;align-items:center;gap:22px;
+  }
+  .theme-mujer .contact-card{background:linear-gradient(160deg,var(--rose-100),var(--paper));}
+  .theme-hombre .contact-card{background:linear-gradient(160deg,var(--blue-100),var(--paper));}
+  .contact-methods{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;}
+  .contact-pill{
+    display:flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;background:var(--paper);
+    box-shadow:var(--shadow);font-size:.88rem;
+  }
+  .contact-pill svg{width:18px;height:18px;stroke-width:1.4;}
+  .theme-mujer .contact-pill svg{stroke:var(--rose-900);}
+  .theme-hombre .contact-pill svg{stroke:var(--blue-900);}
+  .contact-note{font-size:.78rem;color:var(--ink-soft);max-width:420px;}
+
+  .contact-place{font-size:.92rem;color:var(--ink-soft);letter-spacing:.04em;}
+  .world-footer{padding:40px 24px;text-align:center;border-top:1px solid rgba(46,40,35,.08);}
+  .world-footer .brand-mark{display:block;margin-bottom:8px;}
+  .world-footer small{color:var(--ink-soft);font-size:.76rem;}
+
+  @media (max-width:860px){
+    .catalog-grid,.testi-grid{grid-template-columns:1fr 1fr;}
+    .pillars{grid-template-columns:1fr;gap:34px;}
+    .about-grid{grid-template-columns:1fr;gap:32px;}
+    .world-nav .links{display:none;}
+  }
+  @media (max-width:560px){
+    .catalog-grid,.testi-grid{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+    .contact-card{padding:36px 22px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HOME ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="capBlack" x1="0" x2="1"><stop offset="0" stop-color="#151517"/><stop offset=".35" stop-color="#3b3b40"/><stop offset=".7" stop-color="#18181a"/><stop offset="1" stop-color="#0c0c0d"/></linearGradient>
+    <linearGradient id="capPink" x1="0" x2="1"><stop offset="0" stop-color="#c2255c"/><stop offset=".4" stop-color="#ee5f9a"/><stop offset="1" stop-color="#b01e52"/></linearGradient>
+    <linearGradient id="capClear" x1="0" x2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".25"/><stop offset=".4" stop-color="#ffffff" stop-opacity=".7"/><stop offset="1" stop-color="#ffffff" stop-opacity=".2"/></linearGradient>
+    <linearGradient id="liqAmber" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3a92b"/><stop offset="1" stop-color="#b9740f"/></linearGradient>
+    <linearGradient id="liqWhite" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#efe7dc"/></linearGradient>
+    <linearGradient id="glassShade" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".16"/><stop offset=".25" stop-color="#fff" stop-opacity=".22"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset=".85" stop-color="#fff" stop-opacity=".14"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient>
+    <linearGradient id="labelShade" x1="0" x2="1"><stop offset="0" stop-color="#000" stop-opacity=".12"/><stop offset=".3" stop-color="#fff" stop-opacity=".25"/><stop offset=".7" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".16"/></linearGradient>
+    <clipPath id="bodyClip"><path d="M75 90 L48 416 Q46 430 62 430 L198 430 Q214 430 212 416 L185 90 Z"/></clipPath>
+    <image id="claireLogo" width="104" height="37.8" preserveAspectRatio="xMidYMid slice" href="assets/logo-label.jpg"/>
+  </defs>
+</svg>
+<main id="home">
+  <div class="split-hero">
+    <img class="hero-bg" src="assets/claire-hero.jpg" alt="CLAIRE — ciencia, confianza y estilo. Para él. Para ella. Para siempre.">
+    <a class="hero-zone hero-zone--mujer" href="#/mujer" aria-label="Entrar a CLAIRE Mujer">
+      <span class="zone-label">Mujer</span>
+    </a>
+    <a class="hero-zone hero-zone--hombre" href="#/hombre" aria-label="Entrar a CLAIRE Hombre">
+      <span class="zone-label">Hombre</span>
+    </a>
+  </div>
+<div class="hero-foot">
+    <small>&copy; <span id="year"></span> CLAIRE. Todos los derechos reservados.</small>
+    <nav class="foot-links">
+      <a href="#/mujer">Línea Mujer</a>
+      <a href="#/hombre">Línea Hombre</a>
+      <a href="#/mujer#contacto">Contacto</a>
+    </nav>
+  </div>
+</main>
+
+<!-- ============ MUJER ============ -->
+<div class="world theme-mujer" id="world-mujer" data-world="mujer">
+  <header class="world-nav">
+    <a class="brand-mark" href="#/">CLAIRE</a>
+    <nav class="links">
+      <a href="#mujer-catalogo">Catálogo</a>
+      <a href="#mujer-nosotros">Nosotros</a>
+      <a href="#mujer-testimonios">Testimonios</a>
+      <a href="#mujer-contacto">Contacto</a>
+    </nav>
+    <a class="switch-pill" href="#/hombre">Ver línea hombre</a>
+  </header>
+
+  <section class="world-hero">
+    <span class="eyebrow" style="color:var(--rose-600)">Claire Mujer</span>
+    <h1>Belleza con base científica</h1>
+    <p class="sub">Champú y acondicionador creados a partir de lo que las mujeres realmente piden: cabello reparado, con fuerza y sin frizz.</p>
+  </section>
+
+  <section id="mujer-catalogo">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" style="color:var(--rose-600)">Catálogo</span>
+        <h2>Nuestras líneas</h2>
+      </div>
+      <div class="line-block">
+        <div class="line-head">
+          <span class="eyebrow">Línea Restauración</span>
+          <h3>Para cabello maltratado, seco y con frizz</h3>
+        </div>
+        <div class="catalog-grid">
+        <article class="product-card">
+          <div class="product-photo">
+            <svg class="bottle" viewBox="0 0 260 450" role="img" aria-label="Champú Restauración Intensiva, envase con tapa rosa"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqAmber)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">CHAMPÚ</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Restauración</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Intensiva</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#8c5457">PARA ELLA</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="52" width="104" height="38" rx="3" fill="url(#capClear)" stroke="#d8c3c9" stroke-width=".8"/>
+    <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1"><path d="M90 58V86M100 58V86M110 58V86M120 58V86M130 58V86M140 58V86M150 58V86M160 58V86M170 58V86"/></g>
+    <path d="M78 56V30Q78 20 88 20H172Q182 20 182 30V56Z" fill="url(#capPink)"/>
+    <path d="M128 20H172Q182 20 182 30V44Q156 40 128 47Z" fill="#f6a3c6" fill-opacity=".45"/>
+    <path d="M90 24H118" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+          </div>
+          <div class="product-body">
+            <span class="cat">Champú &middot; Restauración</span>
+            <h3>Restauración Intensiva</h3>
+            <p>Limpia con suavidad mientras trabaja en devolver control y suavidad al cabello dañado por tinte, plancha y secador. Pensado para puntas resecas y frizz.</p>
+            <span class="fragrance">Fragancia floral-afrutada amaderada</span>
+            <a class="product-cta" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Champ%C3%BA%20Restauraci%C3%B3n%20Intensiva%20(CLAIRE%20Mujer)" target="_blank" rel="noopener">Lo quiero</a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-photo">
+            <svg class="bottle" viewBox="0 0 260 450" role="img" aria-label="Acondicionador Reparación Profunda"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqWhite)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">ACONDICIONADOR</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Reparación</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Profunda</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#8c5457">PARA ELLA</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="52" width="104" height="38" rx="3" fill="url(#capClear)" stroke="#d8c3c9" stroke-width=".8"/>
+    <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1"><path d="M90 58V86M100 58V86M110 58V86M120 58V86M130 58V86M140 58V86M150 58V86M160 58V86M170 58V86"/></g>
+    <path d="M78 56V30Q78 20 88 20H172Q182 20 182 30V56Z" fill="url(#capPink)"/>
+    <path d="M128 20H172Q182 20 182 30V44Q156 40 128 47Z" fill="#f6a3c6" fill-opacity=".45"/>
+    <path d="M90 24H118" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+          </div>
+          <div class="product-body">
+            <span class="cat">Acondicionador &middot; Restauración</span>
+            <h3>Reparación Profunda</h3>
+            <p>Nutrición profunda para puntas resecas y cabello con frizz. Desenreda fácil y deja el cabello suave, manejable y con brillo.</p>
+            <span class="fragrance">Fragancia floral-afrutada amaderada</span>
+            <a class="product-cta" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Acondicionador%20Reparaci%C3%B3n%20Profunda%20(CLAIRE%20Mujer)" target="_blank" rel="noopener">Lo quiero</a>
+          </div>
+        </article>
+        <article class="product-card product-card--kit">
+          <div class="product-photo"><span class="badge-kit">Kit completo</span>
+            <svg class="bottle" viewBox="0 0 400 450" role="img" aria-label="Kit Restauración: champú y acondicionador"><g transform="translate(0 0)"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqAmber)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">CHAMPÚ</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Restauración</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Intensiva</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#8c5457">PARA ELLA</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="52" width="104" height="38" rx="3" fill="url(#capClear)" stroke="#d8c3c9" stroke-width=".8"/>
+    <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1"><path d="M90 58V86M100 58V86M110 58V86M120 58V86M130 58V86M140 58V86M150 58V86M160 58V86M170 58V86"/></g>
+    <path d="M78 56V30Q78 20 88 20H172Q182 20 182 30V56Z" fill="url(#capPink)"/>
+    <path d="M128 20H172Q182 20 182 30V44Q156 40 128 47Z" fill="#f6a3c6" fill-opacity=".45"/>
+    <path d="M90 24H118" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-linecap="round" fill="none"/></g><g transform="translate(135 0)"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqWhite)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">ACONDICIONADOR</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Reparación</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Profunda</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#8c5457">PARA ELLA</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="52" width="104" height="38" rx="3" fill="url(#capClear)" stroke="#d8c3c9" stroke-width=".8"/>
+    <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1"><path d="M90 58V86M100 58V86M110 58V86M120 58V86M130 58V86M140 58V86M150 58V86M160 58V86M170 58V86"/></g>
+    <path d="M78 56V30Q78 20 88 20H172Q182 20 182 30V56Z" fill="url(#capPink)"/>
+    <path d="M128 20H172Q182 20 182 30V44Q156 40 128 47Z" fill="#f6a3c6" fill-opacity=".45"/>
+    <path d="M90 24H118" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-linecap="round" fill="none"/></g></svg>
+          </div>
+          <div class="product-body">
+            <span class="cat">Kit &middot; Restauración</span>
+            <h3>Kit Restauración</h3>
+            <p>El ritual completo en dos pasos: Champú Restauración Intensiva + Acondicionador Reparación Profunda para un cabello que se siente cuidado de raíz a puntas.</p>
+            <span class="fragrance">Fragancia floral-afrutada amaderada</span>
+            <a class="product-cta" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Kit%20Restauraci%C3%B3n%20(CLAIRE%20Mujer)" target="_blank" rel="noopener">Lo quiero</a>
+          </div>
+        </article>
+        </div>
+      </div>
+      <div class="line-block">
+        <div class="line-head">
+          <span class="eyebrow">Línea Vitalidad</span>
+          <h3>Para controlar la caída y fortalecer desde la raíz</h3>
+        </div>
+        <div class="catalog-grid">
+        <article class="product-card">
+          <div class="product-photo">
+            <svg class="bottle" viewBox="0 0 260 450" role="img" aria-label="Champú Estimulante Anticaída"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqAmber)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">CHAMPÚ</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Estimulante</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Anticaída</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#8c5457">PARA ELLA</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="52" width="104" height="38" rx="3" fill="url(#capClear)" stroke="#d8c3c9" stroke-width=".8"/>
+    <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1"><path d="M90 58V86M100 58V86M110 58V86M120 58V86M130 58V86M140 58V86M150 58V86M160 58V86M170 58V86"/></g>
+    <path d="M78 56V30Q78 20 88 20H172Q182 20 182 30V56Z" fill="url(#capPink)"/>
+    <path d="M128 20H172Q182 20 182 30V44Q156 40 128 47Z" fill="#f6a3c6" fill-opacity=".45"/>
+    <path d="M90 24H118" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+          </div>
+          <div class="product-body">
+            <span class="cat">Champú &middot; Vitalidad</span>
+            <h3>Estimulante Anticaída</h3>
+            <p>Estimula el cuero cabelludo y ayuda a controlar la caída desde el primer paso de tu rutina, con una sensación fresca y herbal.</p>
+            <span class="fragrance">Fragancia fresca herbal-cítrica</span>
+            <a class="product-cta" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Champ%C3%BA%20Estimulante%20Antica%C3%ADda%20(CLAIRE%20Mujer)" target="_blank" rel="noopener">Lo quiero</a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-photo">
+            <svg class="bottle" viewBox="0 0 260 450" role="img" aria-label="Acondicionador Densidad y Anclaje"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqWhite)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">ACONDICIONADOR</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Densidad</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">y Anclaje</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#8c5457">PARA ELLA</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="52" width="104" height="38" rx="3" fill="url(#capClear)" stroke="#d8c3c9" stroke-width=".8"/>
+    <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1"><path d="M90 58V86M100 58V86M110 58V86M120 58V86M130 58V86M140 58V86M150 58V86M160 58V86M170 58V86"/></g>
+    <path d="M78 56V30Q78 20 88 20H172Q182 20 182 30V56Z" fill="url(#capPink)"/>
+    <path d="M128 20H172Q182 20 182 30V44Q156 40 128 47Z" fill="#f6a3c6" fill-opacity=".45"/>
+    <path d="M90 24H118" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+          </div>
+          <div class="product-body">
+            <span class="cat">Acondicionador &middot; Vitalidad</span>
+            <h3>Densidad y Anclaje</h3>
+            <p>Refuerza la fibra capilar para que tu cabello luzca más denso y resista mejor el quiebre y la caída.</p>
+            <span class="fragrance">Fragancia fresca herbal-cítrica</span>
+            <a class="product-cta" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Acondicionador%20Densidad%20y%20Anclaje%20(CLAIRE%20Mujer)" target="_blank" rel="noopener">Lo quiero</a>
+          </div>
+        </article>
+        <article class="product-card product-card--kit">
+          <div class="product-photo"><span class="badge-kit">Kit completo</span>
+            <svg class="bottle" viewBox="0 0 400 450" role="img" aria-label="Kit Vitalidad: champú y acondicionador"><g transform="translate(0 0)"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqAmber)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">CHAMPÚ</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Estimulante</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Anticaída</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#8c5457">PARA ELLA</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="52" width="104" height="38" rx="3" fill="url(#capClear)" stroke="#d8c3c9" stroke-width=".8"/>
+    <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1"><path d="M90 58V86M100 58V86M110 58V86M120 58V86M130 58V86M140 58V86M150 58V86M160 58V86M170 58V86"/></g>
+    <path d="M78 56V30Q78 20 88 20H172Q182 20 182 30V56Z" fill="url(#capPink)"/>
+    <path d="M128 20H172Q182 20 182 30V44Q156 40 128 47Z" fill="#f6a3c6" fill-opacity=".45"/>
+    <path d="M90 24H118" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-linecap="round" fill="none"/></g><g transform="translate(135 0)"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqWhite)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">ACONDICIONADOR</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">Densidad</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#8c5457">y Anclaje</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#8c5457">PARA ELLA</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="52" width="104" height="38" rx="3" fill="url(#capClear)" stroke="#d8c3c9" stroke-width=".8"/>
+    <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1"><path d="M90 58V86M100 58V86M110 58V86M120 58V86M130 58V86M140 58V86M150 58V86M160 58V86M170 58V86"/></g>
+    <path d="M78 56V30Q78 20 88 20H172Q182 20 182 30V56Z" fill="url(#capPink)"/>
+    <path d="M128 20H172Q182 20 182 30V44Q156 40 128 47Z" fill="#f6a3c6" fill-opacity=".45"/>
+    <path d="M90 24H118" stroke="#fff" stroke-opacity=".6" stroke-width="2" stroke-linecap="round" fill="none"/></g></svg>
+          </div>
+          <div class="product-body">
+            <span class="cat">Kit &middot; Vitalidad</span>
+            <h3>Kit Vitalidad</h3>
+            <p>Champú Estimulante Anticaída + Acondicionador Densidad y Anclaje: la rutina completa para cuidar tu cabello y sentirte con más fuerza.</p>
+            <span class="fragrance">Fragancia fresca herbal-cítrica</span>
+            <a class="product-cta" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Kit%20Vitalidad%20(CLAIRE%20Mujer)" target="_blank" rel="noopener">Lo quiero</a>
+          </div>
+        </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mujer-nosotros">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <span class="eyebrow" style="color:var(--rose-600)">Sobre nosotros</span>
+        <h2 style="margin:12px 0 22px;font-size:clamp(1.9rem,4vw,2.5rem);color:var(--rose-900)">Nacimos de unas manos que llevan 40 años restaurando cabello</h2>
+        <p>CLAIRE es un sueño familiar. Nuestra fundadora lleva 40 años como estilista: cuatro décadas viendo llegar a mujeres con el cabello maltratado, con miedo a perderlo, cansadas de productos que prometen mucho y cumplen poco. Con su conocimiento y su buena mano, muchas salieron con el cabello restaurado y con algo aún más valioso: la seguridad de volver a mirarse al espejo.</p>
+        <p>Su hijo, ingeniero en tecnología, decidió que todo ese saber no podía quedarse en una sola silla de peluquería. Juntos convirtieron la experiencia de toda una vida y las recetas caseras llenas de nutrientes en fórmulas pensadas con rigor, para llegar a más mujeres.</p>
+        <p>Sabemos cómo es tu día: la plancha y el secador, el casco de la moto, el tinte que dejó huella, el temor a que la caída no pare. Por eso cada champú y cada acondicionador de CLAIRE Mujer trabaja en dos frentes: reparar lo que ya se dañó y proteger lo que quieres conservar, con activos de origen natural y promesas que sí cumplimos.</p>
+        <p class="about-quote">Queremos que recuperes tu confianza, empezando por tu cabello.</p>
+        <p class="about-close">Empezamos por el cabello y vamos por más: la belleza capilar y facial, con amor de familia. ¿Vives en pareja? Elijan juntos el Kit para ella y el Kit para él. <a href="#/hombre">Conoce la línea hombre</a></p>
+      </div>
+      <div class="about-visual">
+<svg class="founders" viewBox="0 0 400 400" role="img" aria-label="Ilustración: la fundadora y su hijo, frente a frente" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4">
+  <g stroke="#b97477" transform="translate(26 70) scale(1.8)"><path d="M50 10C62 10 70 22 70 36L69 46C74 54 80 60 81 64C81 67 75 67 70 68C72 71 72 73 71 75C73 77 72 79 70 80C72 82 71 85 69 86C70 92 68 97 62 101L60 128"/>
+<path d="M50 10C34 12 26 30 30 52C32 64 38 72 46 78L48 128"/>
+<path d="M46 48C41 47 40 58 47 60"/>
+<path d="M60 42q4 3 8 0M58 36q6-4 12 0"/>
+<path d="M50 10C18 14 6 46 14 80C19 104 8 116 18 132" stroke-opacity=".8"/>
+<path d="M52 12C24 22 14 52 22 82C26 102 18 114 26 130" stroke-opacity=".6"/>
+<path d="M46 14C28 24 24 50 34 66" stroke-opacity=".5"/><circle cx="30" cy="20" r="11" stroke-opacity=".8"/></g>
+  <g stroke="#5c7d90" transform="translate(374 70) scale(-1.8 1.8)"><path d="M32 50C26 24 40 6 60 8C74 10 80 22 74 34"/>
+<path d="M74 34C76 40 76 44 75 48C80 56 86 62 87 66C87 69 80 69 75 70C77 73 77 75 76 77C78 79 77 81 75 82C77 84 77 88 75 92C73 97 68 102 62 104L60 128"/>
+<path d="M62 104C54 100 48 92 46 82"/>
+<path d="M32 50C30 64 36 74 46 82L48 128"/>
+<path d="M48 54C43 53 42 64 49 66"/>
+<path d="M66 47q4 2 8 0M64 41q6-3 12 0"/>
+<path d="M40 30C48 16 62 14 72 24" stroke-opacity=".6"/>
+<path d="M60 20C67 23 72 29 73 36" stroke="#b8935f" stroke-dasharray="2 3"/></g>
+  <path d="M200 236C168 212 182 188 200 204C218 188 232 212 200 236Z" stroke="#b8935f" stroke-width="1.6"/>
+  <path d="M60 336C130 296 270 376 340 336" stroke="#b8935f" stroke-opacity=".8"/>
+  <path d="M60 350C130 310 270 390 340 350" stroke="#b97477" stroke-opacity=".45"/>
+  <path d="M200 70l4 12 12 4-12 4-4 12-4-12-12-4 12-4Z" stroke="#b8935f"/>
+</svg>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="story-gallery">
+<figure class="story-panel"><div class="art"><svg viewBox="0 0 300 340" role="img" aria-label="Tijeras y ondas de cabello">
+  <path d="M40 60C90 20 130 100 170 60S250 30 270 70"/>
+  <path d="M40 85C90 45 130 125 170 85S250 55 270 95" stroke-opacity=".6"/>
+  <path d="M40 110C90 70 130 150 170 110S250 80 270 120" stroke-opacity=".35"/>
+  <circle cx="112" cy="276" r="22"/><circle cx="188" cy="276" r="22"/>
+  <path d="M108 256L176 160L182 166L124 258Z"/>
+  <path d="M192 256L124 160L118 166L176 258Z"/>
+  <circle cx="150" cy="222" r="4" stroke="#b8935f"/>
+  <path d="M60 190l3 9 9 3-9 3-3 9-3-9-9-3 9-3ZM240 205l3 9 9 3-9 3-3 9-3-9-9-3 9-3Z" stroke="#b8935f"/>
+</svg></div><figcaption>Cuarenta años de oficio en cada fórmula</figcaption></figure>
+<figure class="story-panel"><div class="art"><svg viewBox="0 0 300 340" role="img" aria-label="Molécula y hoja: ciencia y naturaleza">
+  <path d="M156 150L133 190L87 190L64 150L87 110L133 110Z"/>
+  <circle cx="156" cy="150" r="5"/><circle cx="133" cy="190" r="5"/><circle cx="87" cy="190" r="5"/><circle cx="64" cy="150" r="5"/><circle cx="87" cy="110" r="5"/><circle cx="133" cy="110" r="5"/>
+  <path d="M161 147L196 126"/><circle cx="203" cy="122" r="8"/>
+  <path d="M137 196L150 232"/><circle cx="152" cy="238" r="6"/>
+  <path d="M190 300C190 250 230 220 272 220C272 265 242 305 190 300Z"/>
+  <path d="M190 300L258 232" stroke="#b8935f"/>
+  <path d="M212 278L214 258M228 264L244 266M236 250L238 238" stroke-opacity=".6"/>
+  <path d="M230 60l3 9 9 3-9 3-3 9-3-9-9-3 9-3Z" stroke="#b8935f"/>
+</svg></div><figcaption>Ciencia y naturaleza, de la mano</figcaption></figure>
+<figure class="story-panel"><div class="art"><svg viewBox="0 0 300 340" role="img" aria-label="Perfil de mujer con cabello largo ondulado">
+  <g transform="translate(58 34) scale(2)"><path d="M50 10C62 10 70 22 70 36L69 46C74 54 80 60 81 64C81 67 75 67 70 68C72 71 72 73 71 75C73 77 72 79 70 80C72 82 71 85 69 86C70 92 68 97 62 101L60 128"/>
+<path d="M50 10C34 12 26 30 30 52C32 64 38 72 46 78L48 128"/>
+<path d="M46 48C41 47 40 58 47 60"/>
+<path d="M60 42q4 3 8 0M58 36q6-4 12 0"/>
+<path d="M50 10C18 14 6 46 14 80C19 104 8 116 18 132" stroke-opacity=".8"/>
+<path d="M52 12C24 22 14 52 22 82C26 102 18 114 26 130" stroke-opacity=".6"/>
+<path d="M46 14C28 24 24 50 34 66" stroke-opacity=".5"/></g>
+  <path d="M240 90c-8 12-8 20 0 22 8-2 8-10 0-22Z" stroke="#b8935f"/>
+  <path d="M262 130c-6 9-6 15 0 17 6-2 6-8 0-17Z" stroke="#b8935f" stroke-opacity=".7"/>
+</svg></div><figcaption>Hecho para tu cabello, tu ritmo y tu confianza</figcaption></figure>
+      </div>
+    </div>
+    <div class="wrap" style="margin-top:72px;">
+      <div class="pillars">
+        <div class="pillar">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 4a10 10 0 0 1 10 10c0 6-4 8-4 14H18c0-6-4-8-4-14A10 10 0 0 1 24 4Z"/><path d="M18 34h12v4a6 6 0 0 1-12 0Z"/></svg>
+          <h3>Ciencia</h3>
+          <p>Fórmulas pensadas con rigor y criterio de ingeniería.</p>
+        </div>
+        <div class="pillar">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 42S6 30 6 17a10 10 0 0 1 18-6 10 10 0 0 1 18 6c0 13-18 25-18 25Z"/></svg>
+          <h3>Confianza</h3>
+          <p>Promesas claras y productos que las cumplen.</p>
+        </div>
+        <div class="pillar">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 4l4.5 12.5L41 21l-12.5 4.5L24 38l-4.5-12.5L7 21l12.5-4.5Z" stroke-linejoin="round"/></svg>
+          <h3>Estilo</h3>
+          <p>Cuidado que se nota y se siente bien.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mujer-testimonios">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" style="color:var(--rose-600)">Testimonios</span>
+        <h2>Lo que dicen de nosotras</h2>
+      </div>
+      <div class="testi-list">
+        <article class="testi-card testi-feature">
+          <span class="eyebrow">Historia de pareja</span>
+          <q>Siempre que comprábamos champú, como Cristian usaba el mismo mío, prácticamente él lo escogía, y al final resultaba un champú que a mí no me servía del todo, y a él tampoco. Ahora cada uno tiene sus productos, hechos para lo que cada uno necesita.</q>
+          <p class="testi-aside">Cristian, su esposo: “Ya no le quito el champú a mi esposa, jaja.”</p>
+          <div class="testi-who"><span class="testi-avatar"></span><div><div class="name">Heidy y Cristian</div><div class="role">Cada uno con su línea de CLAIRE</div></div></div>
+        </article>
+        <div class="testi-grid testi-grid--4">
+        <article class="testi-card">
+          <q>Después de mi embarazo se me cayó mucho el cabello. Conocí estos productos y ahora mi cabello se siente fuerte y ya no tengo la caída de antes.</q>
+          <div class="testi-who"><span class="testi-avatar"></span><div><div class="name">Angie B.</div><div class="role">26 años · Línea Vitalidad</div></div></div>
+        </article>        <article class="testi-card">
+          <q>Por el estrés del trabajo mi cabello se empezó a caer y sentía que tenía menos. Empecé a usar el Kit y ahora lo siento más abundante, y ya no se me cae.</q>
+          <div class="testi-who"><span class="testi-avatar"></span><div><div class="name">Andrea P.</div><div class="role">38 años · Kit Vitalidad</div></div></div>
+        </article>        <article class="testi-card">
+          <q>Me hice una decoloración y las puntas me quedaron resecas, sentía el cabello como una esponja. Con los productos de otras marcas sentía que el problema empeoraba. Me recomendaron CLAIRE y la diferencia ha sido bastante: mi cabello empezó a recuperarse y le veo vida, brillo y suavidad.</q>
+          <div class="testi-who"><span class="testi-avatar"></span><div><div class="name">Carolina P.</div><div class="role">23 años · Línea Restauración</div></div></div>
+        </article>        <article class="testi-card">
+          <q>Por el uso diario de la plancha tenía el cabello quebrado y las puntas resecas, y por eso terminaba usando aún más la plancha para poder peinarme. Estos productos cambiaron mi cabello: es como si se hubiera reparado, y ahora tengo más confianza para usar la plancha y que me quede lindo.</q>
+          <div class="testi-who"><span class="testi-avatar"></span><div><div class="name">Nataly T.</div><div class="role">35 años · Línea Restauración</div></div></div>
+        </article>        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mujer-contacto">
+    <div class="wrap">
+      <div class="contact-card">
+        <span class="eyebrow" style="color:var(--rose-600)">Contacto</span>
+        <h2 style="color:var(--rose-900);font-size:clamp(1.8rem,4vw,2.3rem)">Hablemos de tu rutina</h2>
+        <div class="contact-methods">
+          <a class="contact-pill" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20CLAIRE%20Mujer" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-13.9-5.5L4 20l6.1-1.9A8 8 0 0 0 20 12Z"/></svg>
+            WhatsApp
+          </a>
+          <a class="contact-pill" href="https://www.instagram.com/claire31861/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            Instagram
+          </a>
+          <a class="contact-pill" href="https://www.tiktok.com/@claire04917" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.6 2.2 4 5 4.3"/></svg>
+            TikTok
+          </a>
+        </div>
+        <p class="contact-place">Bogotá, Colombia &middot; Envíos a todo el país</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="world-footer">
+    <a class="brand-mark" href="#/">CLAIRE</a>
+    <small>&copy; <span class="yr"></span> CLAIRE. Ciencia, confianza y estilo.</small>
+  </footer>
+</div>
+
+<!-- ============ HOMBRE ============ -->
+<div class="world theme-hombre" id="world-hombre" data-world="hombre">
+  <header class="world-nav">
+    <a class="brand-mark" href="#/">CLAIRE</a>
+    <nav class="links">
+      <a href="#hombre-catalogo">Catálogo</a>
+      <a href="#hombre-nosotros">Nosotros</a>
+      <a href="#hombre-testimonios">Testimonios</a>
+      <a href="#hombre-contacto">Contacto</a>
+    </nav>
+    <a class="switch-pill" href="#/mujer">Ver línea mujer</a>
+  </header>
+
+  <section class="world-hero">
+    <span class="eyebrow" style="color:var(--blue-600)">Claire Hombre</span>
+    <h1>Cuidado sin complicaciones</h1>
+    <p class="sub">Champú y acondicionador prácticos y efectivos, pensados para lo que más te preocupa: la caída y la caspa.</p>
+  </section>
+
+  <section id="hombre-catalogo">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" style="color:var(--blue-600)">Catálogo</span>
+        <h2>Nuestras líneas</h2>
+      </div>
+      <div class="line-block">
+        <div class="line-head">
+          <span class="eyebrow">Línea Energía</span>
+          <h3>Para frenar las entradas y cuidar tu línea frontal</h3>
+        </div>
+        <div class="catalog-grid">
+        <article class="product-card">
+          <div class="product-photo">
+            <svg class="bottle" viewBox="0 0 260 450" role="img" aria-label="Champú Anticaída Activo, envase con tapa negra"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqAmber)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">CHAMPÚ</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Anticaída</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Activo</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#3f5c6e">PARA ÉL</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="20" width="104" height="70" rx="6" fill="url(#capBlack)"/>
+    <rect x="84" y="24" width="7" height="60" rx="3" fill="#fff" fill-opacity=".28"/>
+    <rect x="78" y="82" width="104" height="8" rx="3" fill="#000" fill-opacity=".5"/></svg>
+          </div>
+          <div class="product-body">
+            <span class="cat">Champú &middot; Energía</span>
+            <h3>Anticaída Activo</h3>
+            <p>Fórmula práctica que ayuda a controlar la caída y activa el cuero cabelludo. Hecho para hombres que notan entradas y quieren resultados sin complicarse.</p>
+            <span class="fragrance">Fragancia amaderada-aromática especiada</span>
+            <a class="product-cta" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Champ%C3%BA%20Antica%C3%ADda%20Activo%20(CLAIRE%20Hombre)" target="_blank" rel="noopener">Lo quiero</a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-photo">
+            <svg class="bottle" viewBox="0 0 260 450" role="img" aria-label="Acondicionador Ligero Anticaída"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqWhite)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">ACONDICIONADOR</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Ligero</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Anticaída</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#3f5c6e">PARA ÉL</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="20" width="104" height="70" rx="6" fill="url(#capBlack)"/>
+    <rect x="84" y="24" width="7" height="60" rx="3" fill="#fff" fill-opacity=".28"/>
+    <rect x="78" y="82" width="104" height="8" rx="3" fill="#000" fill-opacity=".5"/></svg>
+          </div>
+          <div class="product-body">
+            <span class="cat">Acondicionador &middot; Energía</span>
+            <h3>Ligero Anticaída</h3>
+            <p>Textura ligera que acondiciona y fortalece sin apelmazar ni engrasar, con enfoque anticaída para el uso diario.</p>
+            <span class="fragrance">Fragancia amaderada-aromática especiada</span>
+            <a class="product-cta" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Acondicionador%20Ligero%20Antica%C3%ADda%20(CLAIRE%20Hombre)" target="_blank" rel="noopener">Lo quiero</a>
+          </div>
+        </article>
+        <article class="product-card product-card--kit">
+          <div class="product-photo"><span class="badge-kit">Kit completo</span>
+            <svg class="bottle" viewBox="0 0 400 450" role="img" aria-label="Kit Energía: champú y acondicionador"><g transform="translate(0 0)"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqAmber)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">CHAMPÚ</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Anticaída</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Activo</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#3f5c6e">PARA ÉL</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="20" width="104" height="70" rx="6" fill="url(#capBlack)"/>
+    <rect x="84" y="24" width="7" height="60" rx="3" fill="#fff" fill-opacity=".28"/>
+    <rect x="78" y="82" width="104" height="8" rx="3" fill="#000" fill-opacity=".5"/></g><g transform="translate(135 0)"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqWhite)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">ACONDICIONADOR</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Ligero</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Anticaída</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#3f5c6e">PARA ÉL</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="20" width="104" height="70" rx="6" fill="url(#capBlack)"/>
+    <rect x="84" y="24" width="7" height="60" rx="3" fill="#fff" fill-opacity=".28"/>
+    <rect x="78" y="82" width="104" height="8" rx="3" fill="#000" fill-opacity=".5"/></g></svg>
+          </div>
+          <div class="product-body">
+            <span class="cat">Kit &middot; Energía</span>
+            <h3>Kit Energía</h3>
+            <p>Champú Anticaída Activo + Acondicionador Ligero Anticaída: dos pasos simples para una rutina anticaída que sí vas a mantener.</p>
+            <span class="fragrance">Fragancia amaderada-aromática especiada</span>
+            <a class="product-cta" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Kit%20Energ%C3%ADa%20(CLAIRE%20Hombre)" target="_blank" rel="noopener">Lo quiero</a>
+          </div>
+        </article>
+        </div>
+      </div>
+      <div class="line-block">
+        <div class="line-head">
+          <span class="eyebrow">Línea Alivio</span>
+          <h3>Para la caspa, la picazón y el cuero cabelludo reseco</h3>
+        </div>
+        <div class="catalog-grid">
+        <article class="product-card">
+          <div class="product-photo">
+            <svg class="bottle" viewBox="0 0 260 450" role="img" aria-label="Champú Anticaspa Purificante"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqAmber)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">CHAMPÚ</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Anticaspa</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Purificante</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#3f5c6e">PARA ÉL</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="20" width="104" height="70" rx="6" fill="url(#capBlack)"/>
+    <rect x="84" y="24" width="7" height="60" rx="3" fill="#fff" fill-opacity=".28"/>
+    <rect x="78" y="82" width="104" height="8" rx="3" fill="#000" fill-opacity=".5"/></svg>
+          </div>
+          <div class="product-body">
+            <span class="cat">Champú &middot; Alivio</span>
+            <h3>Anticaspa Purificante</h3>
+            <p>Purifica el cuero cabelludo y ayuda a controlar la caspa visible, con una sensación de limpieza profunda y fresca.</p>
+            <span class="fragrance">Fragancia amaderada-cítrica calmante</span>
+            <a class="product-cta" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Champ%C3%BA%20Anticaspa%20Purificante%20(CLAIRE%20Hombre)" target="_blank" rel="noopener">Lo quiero</a>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-photo">
+            <svg class="bottle" viewBox="0 0 260 450" role="img" aria-label="Acondicionador Hidratación Calmante"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqWhite)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">ACONDICIONADOR</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Hidratación</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Calmante</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#3f5c6e">PARA ÉL</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="20" width="104" height="70" rx="6" fill="url(#capBlack)"/>
+    <rect x="84" y="24" width="7" height="60" rx="3" fill="#fff" fill-opacity=".28"/>
+    <rect x="78" y="82" width="104" height="8" rx="3" fill="#000" fill-opacity=".5"/></svg>
+          </div>
+          <div class="product-body">
+            <span class="cat">Acondicionador &middot; Alivio</span>
+            <h3>Hidratación Calmante</h3>
+            <p>Hidrata y calma la resequedad y la incomodidad del cuero cabelludo sin dejar el cabello pesado.</p>
+            <span class="fragrance">Fragancia amaderada-cítrica calmante</span>
+            <a class="product-cta" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Acondicionador%20Hidrataci%C3%B3n%20Calmante%20(CLAIRE%20Hombre)" target="_blank" rel="noopener">Lo quiero</a>
+          </div>
+        </article>
+        <article class="product-card product-card--kit">
+          <div class="product-photo"><span class="badge-kit">Kit completo</span>
+            <svg class="bottle" viewBox="0 0 400 450" role="img" aria-label="Kit Alivio: champú y acondicionador"><g transform="translate(0 0)"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqAmber)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">CHAMPÚ</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Anticaspa</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Purificante</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#3f5c6e">PARA ÉL</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="20" width="104" height="70" rx="6" fill="url(#capBlack)"/>
+    <rect x="84" y="24" width="7" height="60" rx="3" fill="#fff" fill-opacity=".28"/>
+    <rect x="78" y="82" width="104" height="8" rx="3" fill="#000" fill-opacity=".5"/></g><g transform="translate(135 0)"><ellipse cx="130" cy="436" rx="98" ry="9" fill="#000" fill-opacity=".14"/>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="#ffffff" fill-opacity=".22"/>
+  <g clip-path="url(#bodyClip)">
+    <rect x="40" y="150" width="180" height="290" fill="url(#liqWhite)"/>
+    <ellipse cx="130" cy="150" rx="61" ry="6" fill="#ffffff" fill-opacity=".35"/>
+    <rect x="40" y="80" width="180" height="360" fill="url(#glassShade)"/>
+  </g>
+  <path d="M75 90L48 416Q46 430 62 430L198 430Q214 430 212 416L185 90Z" fill="none" stroke="#7d8b94" stroke-opacity=".55" stroke-width="1.2"/>
+  <path d="M83 118L60 395" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="73" y="84" width="114" height="8" rx="3" fill="#fff" fill-opacity=".45" stroke="#7d8b94" stroke-opacity=".5" stroke-width=".8"/>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="#fffdfb" stroke="#e6ddd5" stroke-width=".8"/>
+  <g transform="translate(78 207)"><use href="#claireLogo"/></g>
+  <text x="130" y="266" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.6" letter-spacing="1.6" fill="#6b5f57">ACONDICIONADOR</text>
+  <text x="130" y="284" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Hidratación</text>
+  <text x="130" y="299" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-weight="600" font-size="14.5" fill="#3f5c6e">Calmante</text>
+  <path d="M104 310H156" stroke="#b8935f" stroke-width=".8"/>
+  <text x="130" y="326" text-anchor="middle" font-family="Jost,sans-serif" font-size="6.4" letter-spacing="2" fill="#3f5c6e">PARA ÉL</text>
+  <path d="M71.6 196Q130 204 188.4 196L200.8 352Q130 361 59.2 352Z" fill="url(#labelShade)"/>
+  <rect x="78" y="20" width="104" height="70" rx="6" fill="url(#capBlack)"/>
+    <rect x="84" y="24" width="7" height="60" rx="3" fill="#fff" fill-opacity=".28"/>
+    <rect x="78" y="82" width="104" height="8" rx="3" fill="#000" fill-opacity=".5"/></g></svg>
+          </div>
+          <div class="product-body">
+            <span class="cat">Kit &middot; Alivio</span>
+            <h3>Kit Alivio</h3>
+            <p>Champú Anticaspa Purificante + Acondicionador Hidratación Calmante: la combinación para decir adiós a la caspa y sentirte cómodo todo el día.</p>
+            <span class="fragrance">Fragancia amaderada-cítrica calmante</span>
+            <a class="product-cta" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Kit%20Alivio%20(CLAIRE%20Hombre)" target="_blank" rel="noopener">Lo quiero</a>
+          </div>
+        </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hombre-nosotros">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <span class="eyebrow" style="color:var(--blue-600)">Sobre nosotros</span>
+        <h2 style="margin:12px 0 22px;font-size:clamp(1.9rem,4vw,2.5rem);color:var(--blue-900)">Para el hombre que se cuida sin complicarse</h2>
+        <p>CLAIRE es un sueño familiar. Nuestra fundadora lleva 40 años como estilista y ha visto de todo: hombres que un día notan las entradas, que la caída avanza o que la caspa no se va, y que casi nunca lo dicen en voz alta. Con su conocimiento y su buena mano, muchos recuperaron algo más que cabello: recuperaron la seguridad.</p>
+        <p>Su hijo, ingeniero en tecnología, entendió algo simple: los hombres también merecen productos hechos para ellos, prácticos y con resultados. Juntos crearon una línea con activos de origen natural y recetas caseras llenas de nutrientes, pensada para cuidar el cuero cabelludo desde la raíz.</p>
+        <p>Sabemos cómo es tu día: gimnasio antes de amanecer, trabajo, familia y poco tiempo. Por eso CLAIRE Hombre es fácil de usar: champú y acondicionador, dos pasos y una rutina que sí vas a mantener. Cuidar tu cabello no es vanidad: es salud, es seguridad y es lo más normal del mundo.</p>
+        <p class="about-quote">Cuidarte es normal. Hacerlo bien, también.</p>
+        <p class="about-close">Empezamos por el cabello y vamos por más: la belleza capilar y facial, con amor de familia. ¿Vives en pareja? Elijan juntos el Kit para ella y el Kit para él. <a href="#/mujer">Conoce la línea mujer</a></p>
+      </div>
+      <div class="about-visual">
+<svg class="founders" viewBox="0 0 400 400" role="img" aria-label="Ilustración: la fundadora y su hijo, frente a frente" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4">
+  <g stroke="#b97477" transform="translate(26 70) scale(1.8)"><path d="M50 10C62 10 70 22 70 36L69 46C74 54 80 60 81 64C81 67 75 67 70 68C72 71 72 73 71 75C73 77 72 79 70 80C72 82 71 85 69 86C70 92 68 97 62 101L60 128"/>
+<path d="M50 10C34 12 26 30 30 52C32 64 38 72 46 78L48 128"/>
+<path d="M46 48C41 47 40 58 47 60"/>
+<path d="M60 42q4 3 8 0M58 36q6-4 12 0"/>
+<path d="M50 10C18 14 6 46 14 80C19 104 8 116 18 132" stroke-opacity=".8"/>
+<path d="M52 12C24 22 14 52 22 82C26 102 18 114 26 130" stroke-opacity=".6"/>
+<path d="M46 14C28 24 24 50 34 66" stroke-opacity=".5"/><circle cx="30" cy="20" r="11" stroke-opacity=".8"/></g>
+  <g stroke="#5c7d90" transform="translate(374 70) scale(-1.8 1.8)"><path d="M32 50C26 24 40 6 60 8C74 10 80 22 74 34"/>
+<path d="M74 34C76 40 76 44 75 48C80 56 86 62 87 66C87 69 80 69 75 70C77 73 77 75 76 77C78 79 77 81 75 82C77 84 77 88 75 92C73 97 68 102 62 104L60 128"/>
+<path d="M62 104C54 100 48 92 46 82"/>
+<path d="M32 50C30 64 36 74 46 82L48 128"/>
+<path d="M48 54C43 53 42 64 49 66"/>
+<path d="M66 47q4 2 8 0M64 41q6-3 12 0"/>
+<path d="M40 30C48 16 62 14 72 24" stroke-opacity=".6"/>
+<path d="M60 20C67 23 72 29 73 36" stroke="#b8935f" stroke-dasharray="2 3"/></g>
+  <path d="M200 236C168 212 182 188 200 204C218 188 232 212 200 236Z" stroke="#b8935f" stroke-width="1.6"/>
+  <path d="M60 336C130 296 270 376 340 336" stroke="#b8935f" stroke-opacity=".8"/>
+  <path d="M60 350C130 310 270 390 340 350" stroke="#b97477" stroke-opacity=".45"/>
+  <path d="M200 70l4 12 12 4-12 4-4 12-4-12-12-4 12-4Z" stroke="#b8935f"/>
+</svg>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="story-gallery">
+<figure class="story-panel"><div class="art"><svg viewBox="0 0 300 340" role="img" aria-label="Tijeras y ondas de cabello">
+  <path d="M40 60C90 20 130 100 170 60S250 30 270 70"/>
+  <path d="M40 85C90 45 130 125 170 85S250 55 270 95" stroke-opacity=".6"/>
+  <path d="M40 110C90 70 130 150 170 110S250 80 270 120" stroke-opacity=".35"/>
+  <circle cx="112" cy="276" r="22"/><circle cx="188" cy="276" r="22"/>
+  <path d="M108 256L176 160L182 166L124 258Z"/>
+  <path d="M192 256L124 160L118 166L176 258Z"/>
+  <circle cx="150" cy="222" r="4" stroke="#b8935f"/>
+  <path d="M60 190l3 9 9 3-9 3-3 9-3-9-9-3 9-3ZM240 205l3 9 9 3-9 3-3 9-3-9-9-3 9-3Z" stroke="#b8935f"/>
+</svg></div><figcaption>Cuarenta años de oficio en cada fórmula</figcaption></figure>
+<figure class="story-panel"><div class="art"><svg viewBox="0 0 300 340" role="img" aria-label="Molécula y hoja: ciencia y naturaleza">
+  <path d="M156 150L133 190L87 190L64 150L87 110L133 110Z"/>
+  <circle cx="156" cy="150" r="5"/><circle cx="133" cy="190" r="5"/><circle cx="87" cy="190" r="5"/><circle cx="64" cy="150" r="5"/><circle cx="87" cy="110" r="5"/><circle cx="133" cy="110" r="5"/>
+  <path d="M161 147L196 126"/><circle cx="203" cy="122" r="8"/>
+  <path d="M137 196L150 232"/><circle cx="152" cy="238" r="6"/>
+  <path d="M190 300C190 250 230 220 272 220C272 265 242 305 190 300Z"/>
+  <path d="M190 300L258 232" stroke="#b8935f"/>
+  <path d="M212 278L214 258M228 264L244 266M236 250L238 238" stroke-opacity=".6"/>
+  <path d="M230 60l3 9 9 3-9 3-3 9-3-9-9-3 9-3Z" stroke="#b8935f"/>
+</svg></div><figcaption>Ciencia y naturaleza, de la mano</figcaption></figure>
+<figure class="story-panel"><div class="art"><svg viewBox="0 0 300 340" role="img" aria-label="Perfil de hombre con cuidado del cabello">
+  <g transform="translate(46 34) scale(2)"><path d="M32 50C26 24 40 6 60 8C74 10 80 22 74 34"/>
+<path d="M74 34C76 40 76 44 75 48C80 56 86 62 87 66C87 69 80 69 75 70C77 73 77 75 76 77C78 79 77 81 75 82C77 84 77 88 75 92C73 97 68 102 62 104L60 128"/>
+<path d="M62 104C54 100 48 92 46 82"/>
+<path d="M32 50C30 64 36 74 46 82L48 128"/>
+<path d="M48 54C43 53 42 64 49 66"/>
+<path d="M66 47q4 2 8 0M64 41q6-3 12 0"/>
+<path d="M40 30C48 16 62 14 72 24" stroke-opacity=".6"/>
+<path d="M60 20C67 23 72 29 73 36" stroke="#b8935f" stroke-dasharray="2 3"/></g>
+  <path d="M244 84l3 9 9 3-9 3-3 9-3-9-9-3 9-3Z" stroke="#b8935f"/>
+  <path d="M262 150c-6 9-6 15 0 17 6-2 6-8 0-17Z" stroke="#b8935f" stroke-opacity=".7"/>
+</svg></div><figcaption>Para que cuidarte sea parte de tu rutina</figcaption></figure>
+      </div>
+    </div>
+    <div class="wrap" style="margin-top:72px;">
+      <div class="pillars">
+        <div class="pillar">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 4a10 10 0 0 1 10 10c0 6-4 8-4 14H18c0-6-4-8-4-14A10 10 0 0 1 24 4Z"/><path d="M18 34h12v4a6 6 0 0 1-12 0Z"/></svg>
+          <h3>Ciencia</h3>
+          <p>Fórmulas pensadas con rigor y criterio de ingeniería.</p>
+        </div>
+        <div class="pillar">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 42S6 30 6 17a10 10 0 0 1 18-6 10 10 0 0 1 18 6c0 13-18 25-18 25Z"/></svg>
+          <h3>Confianza</h3>
+          <p>Promesas claras y productos que las cumplen.</p>
+        </div>
+        <div class="pillar">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 4l4.5 12.5L41 21l-12.5 4.5L24 38l-4.5-12.5L7 21l12.5-4.5Z" stroke-linejoin="round"/></svg>
+          <h3>Estilo</h3>
+          <p>Cuidado que se nota y se siente bien.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hombre-testimonios">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" style="color:var(--blue-600)">Testimonios</span>
+        <h2>Lo que dicen de nosotros</h2>
+      </div>
+      <div class="testi-list">
+        <article class="testi-card testi-feature">
+          <span class="eyebrow">Historia de pareja</span>
+          <q>No sabía que había productos para hombre. Ahora ya no tengo que esconder la marca que uso, mi cabello es diferente, siento más frescura y el aroma me encanta: huele a hombre. Y ya no le quito el champú a mi esposa, jaja.</q>
+          <p class="testi-aside">Heidy, su esposa: “Ahora cada uno tiene productos para sus necesidades.”</p>
+          <div class="testi-who"><span class="testi-avatar"></span><div><div class="name">Cristian y Heidy</div><div class="role">Cada uno con su línea de CLAIRE</div></div></div>
+        </article>
+        <div class="testi-grid testi-grid--4">
+        <article class="testi-card">
+          <q>Mi caída de cabello era muy rápida y me preocupaba. Con este champú ya se pausó.</q>
+          <div class="testi-who"><span class="testi-avatar"></span><div><div class="name">Manuel S.</div><div class="role">52 años · Línea Energía</div></div></div>
+        </article>        <article class="testi-card">
+          <q>Empecé a tener caída parcial, las famosas entradas. Nunca le presté atención a un champú para mí y usaba el de mi esposa. Ahora uso los productos de CLAIRE y veo que la caída se detuvo y que el cabello ha crecido en esas zonas. Y ya no quedo oliendo a flores, jaja.</q>
+          <div class="testi-who"><span class="testi-avatar"></span><div><div class="name">Jeison B.</div><div class="role">29 años · Línea Energía</div></div></div>
+        </article>        <article class="testi-card">
+          <q>A mi edad ya se me notaban las entradas y en la ducha sentía mucha caída y poco cabello. Usando los productos me pasa lo contrario: siento que tengo más cabello y ya no tengo caída.</q>
+          <div class="testi-who"><span class="testi-avatar"></span><div><div class="name">Arley M.</div><div class="role">23 años · Línea Energía</div></div></div>
+        </article>        <article class="testi-card">
+          <q>Mi cuero cabelludo es muy seco y los productos comerciales me producían caspa y más resequedad. Desde que uso estos productos casi no tengo escamación, ya va casi eliminada por completo, y mi cabello se siente diferente, más suave.</q>
+          <div class="testi-who"><span class="testi-avatar"></span><div><div class="name">Alejandro C.</div><div class="role">45 años · Línea Alivio</div></div></div>
+        </article>        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hombre-contacto">
+    <div class="wrap">
+      <div class="contact-card">
+        <span class="eyebrow" style="color:var(--blue-600)">Contacto</span>
+        <h2 style="color:var(--blue-900);font-size:clamp(1.8rem,4vw,2.3rem)">Hablemos de tu rutina</h2>
+        <div class="contact-methods">
+          <a class="contact-pill" href="https://wa.me/573144797177?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20CLAIRE%20Hombre" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-13.9-5.5L4 20l6.1-1.9A8 8 0 0 0 20 12Z"/></svg>
+            WhatsApp
+          </a>
+          <a class="contact-pill" href="https://www.instagram.com/claire31861/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            Instagram
+          </a>
+          <a class="contact-pill" href="https://www.tiktok.com/@claire04917" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.5 2.6 2.2 4 5 4.3"/></svg>
+            TikTok
+          </a>
+        </div>
+        <p class="contact-place">Bogotá, Colombia &middot; Envíos a todo el país</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="world-footer">
+    <a class="brand-mark" href="#/">CLAIRE</a>
+    <small>&copy; <span class="yr"></span> CLAIRE. Ciencia, confianza y estilo.</small>
+  </footer>
+</div>
+
+<script>
+  (function(){
+    var yearEls = document.querySelectorAll('#year, .yr');
+    var y = new Date().getFullYear();
+    yearEls.forEach(function(el){ el.textContent = y; });
+
+    var home = document.getElementById('home');
+    var worlds = {
+      mujer: document.getElementById('world-mujer'),
+      hombre: document.getElementById('world-hombre')
+    };
+
+    function route(){
+      var hash = window.location.hash || '';
+      var match = hash.match(/^#\/(mujer|hombre)/);
+      if(match){
+        home.classList.add('is-hidden');
+        Object.keys(worlds).forEach(function(key){
+          worlds[key].classList.toggle('active', key === match[1]);
+        });
+        window.scrollTo(0,0);
+      } else {
+        home.classList.remove('is-hidden');
+        Object.keys(worlds).forEach(function(key){ worlds[key].classList.remove('active'); });
+      }
+    }
+    window.addEventListener('hashchange', route);
+    route();
+  })();
+</script>
+</body>
+</html>
