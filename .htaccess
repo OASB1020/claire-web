@@ -1,0 +1,4 @@
+# Notas internas del repositorio: no deben verse en la web pública
+<Files "README.md">
+  Require all denied
+</Files>
